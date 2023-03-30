@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Page</title>
+    <style>
+        /* body */
+#container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+#container > div > img{
+    width: 100%;
+    height: 350px;
+}
+#container > div > * {
+    text-align: center;
+}
+#addBtn{
+    width: 40%;
+    margin-left: 30%;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- fetched Data -->
+    </div>
+</body>
+</html>
+<script>
+    let Data=JSON.parse(localStorage.getItem("data"))
+    
+
+    let cont=document.getElementById("container");
+    display(Data)
+    
+    function display(data){
+        cont.innerHTML="";
+        data.forEach((element,index)=>{
+            let card=document.createElement("div");
+            card.style.backgroundColor="white"
+            card.style.height="500px"
+
+            let images=document.createElement("img");
+            let brand=document.createElement("h4");
+            let name=document.createElement("p");
+            let price=document.createElement("h5");
+            let ADD=document.createElement("button");
+            ADD.setAttribute("id","addBtn")
+
+            images.setAttribute("src",element.image1);
+            brand.innerText=element.name;
+            price.innerText=`₹ ${element.price}`
+            ADD.innerText="ADD TO CART"
+            
+            card.append(images,brand,price,ADD);
+            cont.append(card);
+        })
+    }
+</script>

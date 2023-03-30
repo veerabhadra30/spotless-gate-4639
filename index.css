@@ -148,40 +148,79 @@ display: block;
 #categorydiv{
     width: 60%;
     height: 100px;
-    border:1px solid red;
+    border:0px solid red;
     display: grid;
     grid-template-columns: repeat(6,1fr);
     margin: auto;
     gap: 10px;
 }
 
-#categorydiv > img{
+#categorydiv > a > img{
     width: 100%;
     height: 100px;
 }
-#categorydiv > img:hover{
+#categorydiv > a > img:hover{
     transform: scale(1.1);
 }
 
-/* body */
-#container{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 20px;
-}
-#container > div > img{
-    width: 100%;
-    height: 350px;
-}
-#container > div > * {
+
+/* deals wheel */
+.deals{
+    width: 80%;
+    margin: auto;
     text-align: center;
+    background-color: aliceblue;
+    margin-bottom: 20px;
 }
-#addBtn{
-    width: 40%;
-    margin-left: 30%;
-    background-color: black;
-    color: white;
-    font-size: 15px;
-    border-radius: 6px;
+.dealsDiv{
+    width: 80%;
+    margin: auto;
+    gap: 30px;
+    display: flex;
+}
+#dealsDiv > a > img{
+    width: 100%;
+}
+
+/* offers */
+.offers{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    background-color: aliceblue;
+    margin-bottom: 20px;
+}
+.offersDiv{
+    width: 80%;
+    margin: auto;
+    gap: 30px;
+    display: flex;
+}
+#offersDiv > a > img{
+    width: 100%;
+}
+
+/* advertise Div */
+.advertiseDiv{
+    width: 90%;
+    margin: auto;
+}
+.advertiseDiv > a > img{
+    width: 100%;
+}
+
+/* two divs */
+.twoDiv{
+    width: 90%;
+    margin-left: 10%;
+    display: flex;
+    gap:40px
+}
+
+/* footer */
+.footer{
+    width: 100%;
+}
+.footer > img{
+    width:100%
 }
