@@ -49,8 +49,8 @@
         <div id="signinDiv">
             <h1>Sign In</h1>
             <form action="">
-                <input type="email" placeholder="Enter Email ID">
-                <input type="password" placeholder="Enter Password">
+                <input type="email" placeholder="Enter Email ID" id="email">
+                <input type="password" placeholder="Enter Password" id="Password">
                 <input type="submit">
             </form>
             <h3>Dont have account,<a href="signup.html">Sign Up</a></h3>
@@ -58,3 +58,24 @@
     </div>
 </body>
 </html>
+<script>
+    let UserDetails=JSON.parse(localStorage.getItem("User"))
+
+    let Form=document.querySelector("form");
+
+    
+    Form.addEventListener("submit",function(e){
+        e.preventDefault();
+        let Email=document.getElementById("email")
+        let Password=document.getElementById("Password")
+
+        if ((UserDetails[0].email)===(Email.value) && (UserDetails[0].password)===(Password.value)){
+            window.location.href="index.html"
+            alert("Login Succesfull")
+        }else{
+            alert("Wrong Credentials")
+        }
+        
+    })
+    
+</script>
