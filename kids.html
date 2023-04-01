@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Page</title>
+    <title>Mens Page</title>
     <style>
         /* body */
 #container{
@@ -14,11 +14,27 @@
     gap: 20px;
 }
 #container > div > img{
-    width: 100%;
-    height: 350px;
+    width: 80%;
+    margin-left: 10%;
+    height: 250px;
+    border-radius: 10px;
+}
+#container > div > img:hover{
+    width: 90%;
+    margin-left: 5%;
+}
+#container > div{
+    border: 1px solid orange;
+    height: 420px;
+    border-radius: 10px;
+    background-color: gainsboro;
+}
+#container > div:hover{
+    background-color: white;
 }
 #container > div > * {
     text-align: center;
+    
 }
 #addBtn{
     width: 40%;
@@ -31,14 +47,15 @@
     </style>
 </head>
 <body>
+    <a href="Cart.html">Go To CART</a>
     <div id="container">
         <!-- fetched Data -->
     </div>
 </body>
 </html>
 <script>
-    let Data=JSON.parse(localStorage.getItem("data"))
-    
+    let Data=JSON.parse(localStorage.getItem("data"))||[]
+    let cartData=JSON.parse(localStorage.getItem("cart"))||[]
 
     let cont=document.getElementById("container");
     display(Data)
@@ -47,8 +64,6 @@
         cont.innerHTML="";
         data.forEach((element,index)=>{
             let card=document.createElement("div");
-            card.style.backgroundColor="white"
-            card.style.height="500px"
 
             let images=document.createElement("img");
             let brand=document.createElement("h4");
@@ -56,6 +71,16 @@
             let price=document.createElement("h5");
             let ADD=document.createElement("button");
             ADD.setAttribute("id","addBtn")
+            ADD.addEventListener("click",function(){
+                if (checkDuplicate(element)){
+                    alert("Product Already in Cart")
+                }else{
+                    cartData.push({...element,quantity:1});
+                    localStorage.setItem("cart",JSON.stringify(cartData))
+                    alert("Product Added To Cart")
+                    //console.log(cartData)
+                }
+            })
 
             images.setAttribute("src",element.image1);
             brand.innerText=element.name;
@@ -65,5 +90,15 @@
             card.append(images,brand,price,ADD);
             cont.append(card);
         })
+    }
+
+    // for duplicate check
+    function checkDuplicate(product){
+      for (let i=0;i<cartData.length;i++){
+        if (product.id===cartData[i].id){
+          return true;
+        }
+      }
+      return false
     }
 </script>

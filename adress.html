@@ -61,17 +61,37 @@
             <img src="adress.gif" alt="">
         </div>
         <div id="two">
-            <form action="">
-                <input type="text" placeholder="Name">
-                <input type="number" placeholder="Door Number">
-                <input type="text" placeholder="Street">
-                <input type="text" placeholder="Area Name">
-                <input type="text" placeholder="City">
-                <input type="number" placeholder="PinCode">
-                <input type="number" placeholder="Mobile Number">
+            <form >
+                <input type="text" placeholder="Name" id="name">
+                <input type="number" placeholder="Door Number" id="Door">
+                <input type="text" placeholder="Street" id="Street">
+                <input type="text" placeholder="Area Name" id="Area">
+                <input type="text" placeholder="City" id="City">
+                <input type="number" placeholder="PinCode" id="PinCode">
+                <input type="number" placeholder="Mobile Number" id="Mobile">
                 <input type="submit" placeholder="Submit" id="submit">
             </form>
         </div>
     </div>
 </body>
 </html>
+<script>
+    let submitData=document.querySelector("form");
+    submitData.addEventListener("submit",function(e){
+        e.preventDefault()
+        let Name=document.getElementById("name").value;
+        let Door=document.getElementById("Door").value;
+        let Street=document.getElementById("Street").value;
+        let Area=document.getElementById("Area").value;
+        let City=document.getElementById("City").value;
+        let PinCode=document.getElementById("PinCode").value;
+        let Mobile=document.getElementById("Mobile").value;
+        
+        if (Name!=""||Door!=""||Street!=""||Area!=""||City!=""||PinCode!=""||Mobile!=""){
+            window.location.href="booked.html"
+        }else{
+            console.log("alert")
+            alert("please fill all the details")
+        }
+    })
+</script>

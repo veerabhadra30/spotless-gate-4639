@@ -7,6 +7,7 @@
     <title>LandingPage</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://kit.fontawesome.com/068676a427.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <div id="navbar">
@@ -38,10 +39,12 @@
         <div id="userDiv">
             <i class="fa-regular fa-user"></i>
             <p id="userName">Name</p>
+            <h2 id="logout">Logout</h2>
         </div>
         <div id="signINUP">
             <h3><a href="signin.html">SignIn/SignUp</a></h3>
         </div>
+        <div id="cart"><a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a></div>
     </div>
     <br>
     <div id="slider">
@@ -162,10 +165,31 @@
     slideshowFun(movieImages)
     });
 
-    let abc=document.getElementById("mensCategory");
-    abc.addEventListener("click",function(){
-        window.location.href="category.html"
-    })
+    
 
+    // user
+    
+    window.onload = function() {
+    let UserDetails=JSON.parse(localStorage.getItem("User"))|| null
+    let UserName=document.getElementById("userName");
+
+    let signin=document.getElementById("signINUP")
+        if (UserDetails===null){
+            document.getElementById('userDiv').style.display = 'none';
+            document.getElementById('cart').style.display = 'none';s
+        }else{
+            UserName.innerText=UserDetails[0].name
+            document.getElementById('userDiv').style.display = 'block';
+            document.getElementById('signINUP').style.display = 'none';
+            
+        }
+    };
+    
+    let logout=document.getElementById("logout");
+    logout.addEventListener("click",function(){
+        localStorage.removeItem("User");
+        location.reload();
+    })
+    
     
 </script>
