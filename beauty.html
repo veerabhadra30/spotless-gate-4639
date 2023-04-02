@@ -7,6 +7,42 @@
     <title>Mens Page</title>
     <style>
         /* body */
+        #navbar{
+    width: 100%;
+    height: 100px;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    background-color: #0b0b0c;
+}
+#gotocart{
+    margin-left: 50px;
+    font-size: 20px;
+    color: white;
+}
+#Sbrand{
+    width: 100px;
+    margin-left: 100px;
+    font-size: 20px;
+    color: rgb(22, 19, 19);
+}
+#Low{
+    width: 300px;
+    margin-left: 100px;
+    font-size: 20px;
+    color: rgb(10, 9, 9);
+}
+#High{
+    width: 300px;
+    margin-left: 100px;
+    font-size: 20px;
+    color: rgb(18, 16, 16);
+}
+#logo{
+    width: 10%;
+    height: 100px;
+}
+
 #container{
     width: 100%;
     display: grid;
@@ -44,61 +80,31 @@
     font-size: 15px;
     border-radius: 6px;
 }
+#container > img{
+    width: 100%;
+    margin-left: 500px;
+}
     </style>
 </head>
 <body>
-    <a href="Cart.html">Go To CART</a>
+    <div id="navbar">
+        <img id="logo" src="/TRENDEE.gif" alt="">
+        <select name="Brand" id="Sbrand">
+            <option value="">Brand</option>
+        </select>
+        <button id="Low">Low Price to High Price</button>
+        <button id="High">High Price to Low Price</button>
+    </div>
     <div id="container">
         <!-- fetched Data -->
+        <img src="https://onlinewoollenstore.com/wp-content/uploads/elementor/thumbs/Products-will-be-added-soon-459-oy242t8ey7hw684h6l8ibgdjfuz56a34od20yllq70.jpg" alt="">
     </div>
 </body>
 </html>
-<script>
-    let Data=JSON.parse(localStorage.getItem("data"))||[]
-    let cartData=JSON.parse(localStorage.getItem("cart"))||[]
-
-    let cont=document.getElementById("container");
-    display(Data)
-    
-    function display(data){
-        cont.innerHTML="";
-        data.forEach((element,index)=>{
-            let card=document.createElement("div");
-
-            let images=document.createElement("img");
-            let brand=document.createElement("h4");
-            let name=document.createElement("p");
-            let price=document.createElement("h5");
-            let ADD=document.createElement("button");
-            ADD.setAttribute("id","addBtn")
-            ADD.addEventListener("click",function(){
-                if (checkDuplicate(element)){
-                    alert("Product Already in Cart")
-                }else{
-                    cartData.push({...element,quantity:1});
-                    localStorage.setItem("cart",JSON.stringify(cartData))
-                    alert("Product Added To Cart")
-                    //console.log(cartData)
-                }
-            })
-
-            images.setAttribute("src",element.image1);
-            brand.innerText=element.name;
-            price.innerText=`₹ ${element.price}`
-            ADD.innerText="ADD TO CART"
-            
-            card.append(images,brand,price,ADD);
-            cont.append(card);
-        })
+<style>
+    let UserDetails=JSON.parse(localStorage.getItem("User"))||null;
+    console.log(UserDetails)
+    if (UserDetails===null){
+        document.getElementById("gotocart").style.display = "none";
     }
-
-    // for duplicate check
-    function checkDuplicate(product){
-      for (let i=0;i<cartData.length;i++){
-        if (product.id===cartData[i].id){
-          return true;
-        }
-      }
-      return false
-    }
-</script>
+</style>
