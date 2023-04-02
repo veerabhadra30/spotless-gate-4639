@@ -15,7 +15,7 @@
     align-items: center;
     background-color: #0b0b0c;
 }
-#gotocart{
+#navbar > a{
     margin-left: 50px;
     font-size: 20px;
     color: white;
@@ -88,7 +88,7 @@
 </head>
 <body>
     <div id="navbar">
-        <img id="logo" src="/TRENDEE.gif" alt="">
+        <img id="logo" src="/index/TRENDEE.gif" alt="">
         <select name="Brand" id="Sbrand">
             <option value="">Brand</option>
         </select>
@@ -101,10 +101,3 @@
     </div>
 </body>
 </html>
-<style>
-    let UserDetails=JSON.parse(localStorage.getItem("User"))||null;
-    console.log(UserDetails)
-    if (UserDetails===null){
-        document.getElementById("gotocart").style.display = "none";
-    }
-</style>
