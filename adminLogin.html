@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Admin Sign In</title>
     
     <style>
         #signinContainer{
@@ -44,44 +44,48 @@
     <button><a href="index.html">Back To Home Page</a></button>
     <div id="signinContainer">
         <div id="imageDiv">
-            <img src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-5425.jpg?w=2000" alt="">
+            <img src="https://static.vecteezy.com/system/resources/previews/005/879/539/original/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cloud-storage-for-uploading-and-processing-files-illustration-with-isolated-people-scene-free-vector.jpg" alt="">
         </div>
         <div id="signinDiv">
-            <h1>Sign In</h1>
+            <h1>Admin Sign In</h1>
             <form action="">
-                <input type="email" placeholder="Enter Email ID" id="email">
-                <input type="password" placeholder="Enter Password" id="Password">
+                <input type="text" placeholder="Enter Name" id="name">
+                <input type="password" placeholder="Enter Employee ID" id="ID">
                 <input type="submit">
             </form>
-            <h3>Dont have account,<a href="signup.html">Sign Up</a></h3>
-            <p><a href="adminLogin.html">Admin Sign In</a></p>
         </div>
     </div>
 </body>
 </html>
 <script>
-    let UserDetails=JSON.parse(localStorage.getItem("User"))||null;
+
+    let AdminDetails=JSON.parse(localStorage.getItem("Admin"))||[]
+    let userObj={
+        name:"trendee",
+        employeeID:"123",
+    }
+    AdminDetails.push(userObj)
+    localStorage.setItem("Admin",JSON.stringify(AdminDetails))
 
     let Form=document.querySelector("form");
-console.log(UserDetails)
+console.log(AdminDetails)
     
     Form.addEventListener("submit",function(e){
         e.preventDefault();
-        let Email=document.getElementById("email")
-        let Password=document.getElementById("Password")
+        let name=document.getElementById("name")
+        let employeeID=document.getElementById("ID")
 
         
-        if (UserDetails!=null){
-            if ((UserDetails[0].email)===(Email.value) && (UserDetails[0].password)===  (Password.value)){
-            window.location.href="index.html"
-                alert("Login Succesfull")
-            }else if ((UserDetails[0].email)!=(Email.value) || (UserDetails[0].password)!=(Password.value)){
+        if (AdminDetails!=null){
+            if ((AdminDetails[0].name)===(name.value) && (AdminDetails[0].employeeID)===  (employeeID.value)){
+            window.location.href="admin.html"
+            alert("Login Succesfull")
+            }else {
                 alert("Wrong Credentials")
         }
         }else{
-            alert("User Not found, Please complete registration/signup")
+            alert("User Not found")
         }
         
     })
-    
 </script>
